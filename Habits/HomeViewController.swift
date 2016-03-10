@@ -56,7 +56,6 @@ class HomeViewController: BaseViewController {
     public func setupTableView() {
         registerCells()
         tableView.tableFooterView = UIView(frame: CGRectZero)
-        tableView.allowsMultipleSelectionDuringEditing = false
         tableView.contentInset = UIEdgeInsetsMake(0, 0, HomeViewController.kButtonHeight, 0)
         tableView.reloadData()
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import pop
 
 public protocol SwipeTableViewCellDelegate {
     func didTapDeleteButton(cell: SwipeTableViewCell)
@@ -25,6 +26,7 @@ public class SwipeTableViewCell: UITableViewCell {
     static let kFontColor = UIColor.blackColor()
     static let kAccessoryButtonWidth: CGFloat = 65
     static let kDeleteButtonWidthRatio: CGFloat = 0.25
+    static let kActionThresholdDeltaX: CGFloat = 50.0
     
     private var swipeGesture: UIPanGestureRecognizer?
     
@@ -121,7 +123,6 @@ public class SwipeTableViewCell: UITableViewCell {
         deleteButton.width = containerView.width * SwipeTableViewCell.kDeleteButtonWidthRatio
         deleteButton.right = backView.right
         deleteButton.top = 0
-        
     }
     
     public func loadDataIntoViews(viewModel: SwipeTableViewCellModel) {
@@ -138,8 +139,6 @@ public class SwipeTableViewCell: UITableViewCell {
         let constrainedWidth = getContentWidth(boundingWidth) - constrainedWidthAdjustment
         let titleLabelHeight = getTitleLabelHeight(constrainedWidth, viewModel: viewModel, attributedText: getAttributedString(viewModel.title))
         cellHeight += titleLabelHeight
-        
-        cellHeight += getTitleBottomMargin()
         
         // Padding bottom
         cellHeight += Styles.Dimensions.TableViewCellContainerVerticalPadding
@@ -199,53 +198,26 @@ public class SwipeTableViewCell: UITableViewCell {
 
 extension SwipeTableViewCell {
     public func handlePanGesture(sender: UIPanGestureRecognizer) {
-        print("Did pan")
-        //        guard let selectedCellIndexPath = tableView.indexPathForRowAtPoint(sender.locationInView(sender.view)) else { return }
-        //        guard let cell = tableView.cellForRowAtIndexPath(selectedCellIndexPath) as? SwipeTableViewCell else { return }
-        //
-        //        if draggedCell == nil {
-        //            draggedCell = cell
-        //        } else if let draggedCell = draggedCell {
-        //            if cell == draggedCell {
-        //                // Dragged cell exists, and it matches our most recently set draggedCell
-        //            } else {
-        //                // If we drag to a point outside of current cell, disable swipe gesture
-        //                animateCell(draggedCell, reveal: false)
-        //                cellSwipeGesture?.enabled = false
-        //                return
-        //            }
-        //        }
-        //
-        //        let maxCellLeft = maxCellLeft ?? -1 * cell.width * SwipeTableViewCell.kDeleteButtonWidthRatio
-        
         let translationPoint = sender.translationInView(self)
-        // Move the view's center using the gesture
-        let xPoint = translationPoint.x
-        
-        mainView.left = translationPoint.x/2
+        let translationX = translationPoint.x/2
+        let deltaX = abs(translationX)
+        mainView.left = translationX
         
         if sender.state == .Began || sender.state == .Changed {
             // Swiping
         } else {
-            var isEdit = false
-            if xPoint < 100 {
-                isEdit = true
-            }
-            //            animateCell(cell, reveal: isEdit)
+            // Only if we let go do we calculate the drag above threshold
+            let didToggleAction = deltaX > SwipeTableViewCell.kActionThresholdDeltaX
+            print(didToggleAction)
+            animateCell()
         }
     }
     
-    public func animateCell(cell: SwipeTableViewCell, reveal: Bool) {
-        UIView.animateWithDuration(kCellAnimation, animations: { () -> Void in
-            if let maxCellLeft = self.maxCellLeft where reveal {
-                cell.mainView.left = maxCellLeft
-            } else {
-                cell.mainView.left = 0
-            }
+    public func animateCell() {
+        UIView.animateWithDuration(0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 20.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+                self.mainView.left = 0
             }) { (completed) -> Void in
-                // Always enable swipe gesture after any cell stops animation
-                self.draggedCell = nil
-                self.cellSwipeGesture?.enabled = true
+                print("Completed")
         }
     }
 }
