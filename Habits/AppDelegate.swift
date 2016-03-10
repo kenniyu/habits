@@ -23,7 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // there is a user, skip the initial vc
         let initialViewController = HomeViewController()
-        window!.rootViewController = initialViewController
+        let rootViewController = UINavigationController(rootViewController: initialViewController)
+        window!.rootViewController = rootViewController
         window!.makeKeyAndVisible()
         
         return true

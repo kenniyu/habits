@@ -19,6 +19,7 @@ class HomeViewController: BaseViewController {
     public static let kButtonHeight: CGFloat = 60
     public static let kBillTotal: Float = 200
     public static let kNumParticipants: Float = 4
+    public static let kTitle = "Habits"
     
     // Public
     public var sliderCellModels: [SwipeTableViewCellModel] = []
@@ -45,12 +46,12 @@ class HomeViewController: BaseViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        createCellModels()
-        setupTableView()
-        setupStyles()
-        setupAccessibility()
+        title = HomeViewController.kTitle
         
-        setupGestureRecognizers()
+        createCellModels()
+        setupStyles()
+        setupTableView()
+        setupAccessibility()
     }
     
     public func setupTableView() {
@@ -71,14 +72,6 @@ class HomeViewController: BaseViewController {
         ]
     }
     
-    public func setupGestureRecognizers() {
-        /*
-        cellSwipeGesture = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
-        if let gesture = cellSwipeGesture {
-            gesture.delegate = self
-            view.addGestureRecognizer(gesture)
-        }*/
-    }
     
     private func setupAccessibility() {
     }
@@ -92,62 +85,6 @@ class HomeViewController: BaseViewController {
     }
 }
 
-extension HomeViewController: UIGestureRecognizerDelegate {
-    public func handlePanGesture(sender: UIPanGestureRecognizer) {
-        guard let selectedCellIndexPath = tableView.indexPathForRowAtPoint(sender.locationInView(sender.view)) else { return }
-        guard let cell = tableView.cellForRowAtIndexPath(selectedCellIndexPath) as? SwipeTableViewCell else { return }
-        
-        if draggedCell == nil {
-            draggedCell = cell
-        } else if let draggedCell = draggedCell {
-            if cell == draggedCell {
-                // Dragged cell exists, and it matches our most recently set draggedCell
-            } else {
-                // If we drag to a point outside of current cell, disable swipe gesture
-                animateCell(draggedCell, reveal: false)
-                cellSwipeGesture?.enabled = false
-                return
-            }
-        }
-        
-        maxCellLeft = maxCellLeft ?? -1 * cell.width * SwipeTableViewCell.kDeleteButtonWidthRatio
-        
-        let translationPoint = sender.translationInView(cell)
-        // Move the view's center using the gesture
-        let xPoint = translationPoint.x
-        
-        cell.mainView.left = translationPoint.x/2
-        
-        if sender.state == .Began || sender.state == .Changed {
-            // Swiping
-        } else {
-            var isEdit = false
-            if xPoint < maxCellLeft {
-                isEdit = true
-            }
-            animateCell(cell, reveal: isEdit)
-        }
-    }
-    
-    public func animateCell(cell: SwipeTableViewCell, reveal: Bool) {
-        UIView.animateWithDuration(kCellAnimation, animations: { () -> Void in
-            if let maxCellLeft = self.maxCellLeft where reveal {
-                cell.mainView.left = maxCellLeft
-            } else {
-                cell.mainView.left = 0
-            }
-            }) { (completed) -> Void in
-                // Always enable swipe gesture after any cell stops animation
-                self.draggedCell = nil
-                self.cellSwipeGesture?.enabled = true
-        }
-    }
-    
-    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return false
-    }
-}
-
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -157,7 +94,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let viewModel = sliderCellModels[indexPath.row]
         if let cell = tableView.dequeueReusableCellWithIdentifier(SwipeTableViewCell.kReuseIdentifier, forIndexPath: indexPath) as? SwipeTableViewCell {
             cell.setup(viewModel)
-            cell.swipeTableViewCellDelegate = self
             return cell
         }
         return UITableViewCell()
@@ -174,13 +110,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? SwipeTableViewCell else { return }
-        animateCell(cell, reveal: false)
     }
 }
 
 extension HomeViewController: SwipeTableViewCellDelegate {
     public func didTapDeleteButton(cell: SwipeTableViewCell) {
-        animateCell(cell, reveal: false)
         // Remove the cell
     }
 }
