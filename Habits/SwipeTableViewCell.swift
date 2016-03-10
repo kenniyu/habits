@@ -10,7 +10,6 @@ import UIKit
 import pop
 
 public protocol SwipeTableViewCellDelegate {
-    func didTapDeleteButton(cell: SwipeTableViewCell)
 }
 
 public class SwipeTableViewCell: UITableViewCell {
@@ -18,14 +17,14 @@ public class SwipeTableViewCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var backView: UIView!
-    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var plusImageView: UIImageView!
+    @IBOutlet weak var minusImageView: UIImageView!
     
     public var viewModel: SwipeTableViewCellModel!
     public var swipeTableViewCellDelegate: SwipeTableViewCellDelegate?
     
     static let kFontColor = UIColor.blackColor()
     static let kAccessoryButtonWidth: CGFloat = 65
-    static let kDeleteButtonWidthRatio: CGFloat = 0.25
     static let kActionThresholdDeltaX: CGFloat = 50.0
     
     private var swipeGesture: UIPanGestureRecognizer?
@@ -84,9 +83,6 @@ public class SwipeTableViewCell: UITableViewCell {
         }
     }
     
-    
-    
-    
     public func setupStyles(viewModel: SwipeTableViewCellModel) {
         // Cell styles
         containerView.backgroundColor = UIColor.whiteColor()
@@ -96,6 +92,8 @@ public class SwipeTableViewCell: UITableViewCell {
         titleLabel.font = SwipeTableViewCell.getTitleLabelFontStyle(viewModel)
         
         selectionStyle = .None
+        
+        separatorInset = UIEdgeInsetsMake(0, SwipeTableViewCell.getPaddingLeft(), 0, 0)
     }
     
     public override func layoutSubviews() {
@@ -119,10 +117,15 @@ public class SwipeTableViewCell: UITableViewCell {
         titleLabel.height = SwipeTableViewCell.getTitleLabelHeight(containerView.width, viewModel: viewModel)
         titleLabel.width = SwipeTableViewCell.getContentWidth(containerView.width)
         
-        deleteButton.height = backView.height
-        deleteButton.width = containerView.width * SwipeTableViewCell.kDeleteButtonWidthRatio
-        deleteButton.right = backView.right
-        deleteButton.top = 0
+        plusImageView.left = SwipeTableViewCell.getPaddingLeft()
+        plusImageView.height = containerView.height/2
+        plusImageView.width = plusImageView.height
+        plusImageView.center.y = containerView.height/2
+        
+        minusImageView.right = containerView.width - SwipeTableViewCell.getPaddingRight()
+        minusImageView.height = containerView.height/2
+        minusImageView.width = plusImageView.height
+        minusImageView.center.y = containerView.height/2
     }
     
     public func loadDataIntoViews(viewModel: SwipeTableViewCellModel) {
@@ -189,10 +192,6 @@ public class SwipeTableViewCell: UITableViewCell {
     
     public class func getTitleBottomMargin() -> CGFloat {
         return Styles.Dimensions.kItemSpacingDim4
-    }
-    
-    @IBAction func tappedDeleteButton(sender: UIButton) {
-        swipeTableViewCellDelegate?.didTapDeleteButton(self)
     }
 }
 

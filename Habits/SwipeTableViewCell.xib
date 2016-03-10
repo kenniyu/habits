@@ -22,15 +22,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="337" height="89.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="q8l-Hb-vDg">
-                                        <rect key="frame" x="252" y="0.0" width="85" height="89.5"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minus" id="ILO-ee-mnG">
+                                        <rect key="frame" x="0.0" y="0.0" width="86" height="89.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="X">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                    </button>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minus" id="z8R-g6-OFd">
+                                        <rect key="frame" x="250" y="0.0" width="86" height="89.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -56,11 +55,15 @@
             <connections>
                 <outlet property="backView" destination="6Lx-wl-m4D" id="hvC-cp-rBZ"/>
                 <outlet property="containerView" destination="xcM-Y6-MqK" id="fli-fG-eYp"/>
-                <outlet property="deleteButton" destination="q8l-Hb-vDg" id="7YD-ON-mWz"/>
                 <outlet property="mainView" destination="2Tj-hi-u0d" id="O3S-iG-0tO"/>
+                <outlet property="minusImageView" destination="z8R-g6-OFd" id="TOu-au-tYi"/>
+                <outlet property="plusImageView" destination="ILO-ee-mnG" id="IPv-oz-tkL"/>
                 <outlet property="titleLabel" destination="DiK-lh-iDv" id="HfW-1a-Db3"/>
             </connections>
             <point key="canvasLocation" x="250.5" y="359"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="minus" width="160" height="160"/>
+    </resources>
 </document>
