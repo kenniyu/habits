@@ -13,8 +13,6 @@ public protocol SwipeTableViewCellDelegate {
 }
 
 public class SwipeTableViewCell: UITableViewCell {
-    
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var mainView: UIView!
@@ -27,7 +25,8 @@ public class SwipeTableViewCell: UITableViewCell {
     static let kFontColor = UIColor.blackColor()
     static let kAccessoryButtonWidth: CGFloat = 65
     static let kDeleteButtonWidthRatio: CGFloat = 0.25
-    public static let kSliderHeight: CGFloat = Styles.Dimensions.SliderHeight
+    
+    private var swipeGesture: UIPanGestureRecognizer?
     
     
     public class var kReuseIdentifier: String {
@@ -71,7 +70,20 @@ public class SwipeTableViewCell: UITableViewCell {
         setupStyles(viewModel)
         
         loadDataIntoViews(viewModel)
+        
+        setupGestureRecognizers()
     }
+    
+    public func setupGestureRecognizers() {
+        swipeGesture = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
+        swipeGesture?.delegate = self
+        if let gesture = swipeGesture {
+            mainView.addGestureRecognizer(gesture)
+        }
+    }
+    
+    
+    
     
     public func setupStyles(viewModel: SwipeTableViewCellModel) {
         // Cell styles
@@ -129,9 +141,6 @@ public class SwipeTableViewCell: UITableViewCell {
         
         cellHeight += getTitleBottomMargin()
         
-        // Slider control height
-        cellHeight += SwipeTableViewCell.kSliderHeight
-        
         // Padding bottom
         cellHeight += Styles.Dimensions.TableViewCellContainerVerticalPadding
         return CGSizeMake(boundingWidth, cellHeight)
@@ -185,5 +194,58 @@ public class SwipeTableViewCell: UITableViewCell {
     
     @IBAction func tappedDeleteButton(sender: UIButton) {
         swipeTableViewCellDelegate?.didTapDeleteButton(self)
+    }
+}
+
+extension SwipeTableViewCell {
+    public func handlePanGesture(sender: UIPanGestureRecognizer) {
+        print("Did pan")
+        //        guard let selectedCellIndexPath = tableView.indexPathForRowAtPoint(sender.locationInView(sender.view)) else { return }
+        //        guard let cell = tableView.cellForRowAtIndexPath(selectedCellIndexPath) as? SwipeTableViewCell else { return }
+        //
+        //        if draggedCell == nil {
+        //            draggedCell = cell
+        //        } else if let draggedCell = draggedCell {
+        //            if cell == draggedCell {
+        //                // Dragged cell exists, and it matches our most recently set draggedCell
+        //            } else {
+        //                // If we drag to a point outside of current cell, disable swipe gesture
+        //                animateCell(draggedCell, reveal: false)
+        //                cellSwipeGesture?.enabled = false
+        //                return
+        //            }
+        //        }
+        //
+        //        let maxCellLeft = maxCellLeft ?? -1 * cell.width * SwipeTableViewCell.kDeleteButtonWidthRatio
+        
+        let translationPoint = sender.translationInView(self)
+        // Move the view's center using the gesture
+        let xPoint = translationPoint.x
+        
+        mainView.left = translationPoint.x/2
+        
+        if sender.state == .Began || sender.state == .Changed {
+            // Swiping
+        } else {
+            var isEdit = false
+            if xPoint < 100 {
+                isEdit = true
+            }
+            //            animateCell(cell, reveal: isEdit)
+        }
+    }
+    
+    public func animateCell(cell: SwipeTableViewCell, reveal: Bool) {
+        UIView.animateWithDuration(kCellAnimation, animations: { () -> Void in
+            if let maxCellLeft = self.maxCellLeft where reveal {
+                cell.mainView.left = maxCellLeft
+            } else {
+                cell.mainView.left = 0
+            }
+            }) { (completed) -> Void in
+                // Always enable swipe gesture after any cell stops animation
+                self.draggedCell = nil
+                self.cellSwipeGesture?.enabled = true
+        }
     }
 }

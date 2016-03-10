@@ -73,11 +73,12 @@ class HomeViewController: BaseViewController {
     }
     
     public func setupGestureRecognizers() {
+        /*
         cellSwipeGesture = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
         if let gesture = cellSwipeGesture {
             gesture.delegate = self
             view.addGestureRecognizer(gesture)
-        }
+        }*/
     }
     
     private func setupAccessibility() {
