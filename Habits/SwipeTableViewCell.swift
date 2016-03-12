@@ -244,13 +244,13 @@ extension SwipeTableViewCell {
     public func updateBackground(translationX: CGFloat = 0) {
         if translationX < 0 {
             if abs(translationX) >= actionThresholdDeltaX() {
-                mainView.backgroundColor = mainView.backgroundColor?.darker()
+                mainView.backgroundColor = viewModel.getNextColor(false)
             } else {
                 mainView.backgroundColor = viewModel.getColor()
             }
         } else {
             if abs(translationX) >= actionThresholdDeltaX() {
-                mainView.backgroundColor = mainView.backgroundColor?.lighter()
+                mainView.backgroundColor = viewModel.getNextColor(true)
             } else {
                 mainView.backgroundColor = viewModel.getColor()
             }
@@ -260,16 +260,24 @@ extension SwipeTableViewCell {
     
     public func updateImageViewAlphas(translationX: CGFloat) {
         if translationX < 0 {
-            let minDomain: CGFloat = minusButton.left - plusButton.left
+            let minDomain: CGFloat = minusButton.left - 7 * plusButton.left
             let maxDomain: CGFloat = minusButton.right + plusButton.left
             let distDomain = maxDomain - minDomain
-            let alpha = -1 * translationX / distDomain
+            
+            var alpha = -1 * translationX / distDomain
+            if abs(translationX) >= actionThresholdDeltaX() {
+                alpha = 1
+            }
             minusButton.alpha = alpha
         } else if translationX > 0 {
             let minDomain: CGFloat = 0
-            let maxDomain: CGFloat = plusButton.right + plusButton.left
+            let maxDomain: CGFloat = plusButton.right + 7 * plusButton.left
             let distDomain = maxDomain - minDomain
-            let alpha = translationX / distDomain
+
+            var alpha = translationX / distDomain
+            if abs(translationX) >= actionThresholdDeltaX() {
+                alpha = 1
+            }
             plusButton.alpha = alpha
         } else {
             plusButton.alpha = 0

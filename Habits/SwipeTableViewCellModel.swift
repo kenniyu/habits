@@ -38,6 +38,10 @@ public class SwipeTableViewCellModel {
     public func getColor() -> UIColor {
         // for now, we're restricted to hues of 0 to 0.3        
         let percent = CGFloat(current)/CGFloat(max(1, habitMax))
+        return getColorFromPercent(percent)
+    }
+    
+    public func getColorFromPercent(percent: CGFloat) -> UIColor {
         let hue: CGFloat = 0.28 * percent
         let saturation: CGFloat = 0.6
         let brightness: CGFloat = 0.8
@@ -45,5 +49,15 @@ public class SwipeTableViewCellModel {
         
         let color = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
         return color
+    }
+    
+    public func getNextColor(positive: Bool) -> UIColor {
+        var percent: CGFloat = 0
+        if positive {
+            percent = CGFloat(current + 1)/CGFloat(max(1, habitMax))
+        } else {
+            percent = CGFloat(current - 1)/CGFloat(max(1, habitMax + 1))
+        }
+        return getColorFromPercent(percent)
     }
 }

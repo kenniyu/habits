@@ -22,13 +22,13 @@ extension UIColor {
     }
     
     func darker() -> UIColor {
-        var r: CGFloat = 0,
-            g: CGFloat = 0,
-            b: CGFloat = 0,
-            a: CGFloat = 0
+        var hue: CGFloat = 0,
+            saturation: CGFloat = 0,
+            brightness: CGFloat = 0,
+            alpha: CGFloat = 0
         
-        if getRed(&r, green: &g, blue: &b, alpha: &a){
-            return UIColor(red: max(r - 0.2, 0.0), green: max(g - 0.2, 0.0), blue: max(b - 0.2, 0.0), alpha: a)
+        if getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
+            return UIColor(hue: hue, saturation: saturation, brightness: max(0, brightness - 0.1), alpha: alpha)
         }
         
         return self
