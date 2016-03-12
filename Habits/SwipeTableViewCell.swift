@@ -17,8 +17,8 @@ public class SwipeTableViewCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var backView: UIView!
-    @IBOutlet weak var plusImageView: UIImageView!
-    @IBOutlet weak var minusImageView: UIImageView!
+    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var minusButton: UIButton!
     
     public var viewModel: SwipeTableViewCellModel!
     public var swipeTableViewCellDelegate: SwipeTableViewCellDelegate?
@@ -26,6 +26,9 @@ public class SwipeTableViewCell: UITableViewCell {
     static let kFontColor = UIColor.blackColor()
     static let kAccessoryButtonWidth: CGFloat = 65
     static let kActionThresholdDeltaX: CGFloat = 50.0
+    static let kAnimationDuration: NSTimeInterval = 0.2
+    static let kSpringDampingRatio: CGFloat = 0.15
+    static let kSpringVelocity: CGFloat = 6
     
     private var swipeGesture: UIPanGestureRecognizer?
     
@@ -86,14 +89,18 @@ public class SwipeTableViewCell: UITableViewCell {
     public func setupStyles(viewModel: SwipeTableViewCellModel) {
         // Cell styles
         containerView.backgroundColor = UIColor.whiteColor()
-        backgroundColor = UIColor.redColor()
         
         // Element styles
         titleLabel.font = SwipeTableViewCell.getTitleLabelFontStyle(viewModel)
         
         selectionStyle = .None
         
-        separatorInset = UIEdgeInsetsMake(0, SwipeTableViewCell.getPaddingLeft(), 0, 0)
+        // Set alphas of both images to 0
+        plusButton.alpha = 0
+        minusButton.alpha = 0
+        
+        // Update background color
+        updateBackground()
     }
     
     public override func layoutSubviews() {
@@ -108,6 +115,7 @@ public class SwipeTableViewCell: UITableViewCell {
         mainView.frame = containerView.bounds
         backView.frame = containerView.bounds
         
+        
         setSubviewFrames()
     }
     
@@ -117,15 +125,15 @@ public class SwipeTableViewCell: UITableViewCell {
         titleLabel.height = SwipeTableViewCell.getTitleLabelHeight(containerView.width, viewModel: viewModel)
         titleLabel.width = SwipeTableViewCell.getContentWidth(containerView.width)
         
-        plusImageView.left = SwipeTableViewCell.getPaddingLeft()
-        plusImageView.height = containerView.height/2
-        plusImageView.width = plusImageView.height
-        plusImageView.center.y = containerView.height/2
+        plusButton.height = containerView.height/2
+        plusButton.width = plusButton.height
+        plusButton.center.y = containerView.height/2
+        plusButton.left = titleLabel.left
         
-        minusImageView.right = containerView.width - SwipeTableViewCell.getPaddingRight()
-        minusImageView.height = containerView.height/2
-        minusImageView.width = plusImageView.height
-        minusImageView.center.y = containerView.height/2
+        minusButton.height = containerView.height/2
+        minusButton.width = minusButton.height
+        minusButton.center.y = containerView.height/2
+        minusButton.right = titleLabel.right
     }
     
     public func loadDataIntoViews(viewModel: SwipeTableViewCellModel) {
@@ -196,6 +204,10 @@ public class SwipeTableViewCell: UITableViewCell {
 }
 
 extension SwipeTableViewCell {
+    public func actionThresholdDeltaX() -> CGFloat {
+        return plusButton.right + plusButton.left
+    }
+    
     public func handlePanGesture(sender: UIPanGestureRecognizer) {
         let translationPoint = sender.translationInView(self)
         let translationX = translationPoint.x/2
@@ -204,16 +216,69 @@ extension SwipeTableViewCell {
         
         if sender.state == .Began || sender.state == .Changed {
             // Swiping
+            updateImageViewAlphas(translationX)
+            updateBackground(translationX)
         } else {
             // Only if we let go do we calculate the drag above threshold
-            let didToggleAction = deltaX > SwipeTableViewCell.kActionThresholdDeltaX
-            print(didToggleAction)
+            let didToggleAction = deltaX >= actionThresholdDeltaX()
+            if didToggleAction {
+                updateViewModel(translationX)
+            }
             animateCell()
+            updateBackground()
+        }
+    }
+    
+    public func updateViewModel(translationX: CGFloat) {
+        if translationX < 0 {
+            // We swiped left, bad habit
+            viewModel.negativeReinforcement()
+        } else {
+            // Good habit
+            viewModel.positiveReinforcement()
+        }
+        print(viewModel)
+        updateBackground()
+    }
+    
+    public func updateBackground(translationX: CGFloat = 0) {
+        if translationX < 0 {
+            if abs(translationX) >= actionThresholdDeltaX() {
+                mainView.backgroundColor = mainView.backgroundColor?.darker()
+            } else {
+                mainView.backgroundColor = viewModel.getColor()
+            }
+        } else {
+            if abs(translationX) >= actionThresholdDeltaX() {
+                mainView.backgroundColor = mainView.backgroundColor?.lighter()
+            } else {
+                mainView.backgroundColor = viewModel.getColor()
+            }
+        }
+        
+    }
+    
+    public func updateImageViewAlphas(translationX: CGFloat) {
+        if translationX < 0 {
+            let minDomain: CGFloat = minusButton.left - plusButton.left
+            let maxDomain: CGFloat = minusButton.right + plusButton.left
+            let distDomain = maxDomain - minDomain
+            let alpha = -1 * translationX / distDomain
+            minusButton.alpha = alpha
+        } else if translationX > 0 {
+            let minDomain: CGFloat = 0
+            let maxDomain: CGFloat = plusButton.right + plusButton.left
+            let distDomain = maxDomain - minDomain
+            let alpha = translationX / distDomain
+            plusButton.alpha = alpha
+        } else {
+            plusButton.alpha = 0
+            minusButton.alpha = 0
         }
     }
     
     public func animateCell() {
-        UIView.animateWithDuration(0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 20.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+        UIView.animateWithDuration(SwipeTableViewCell.kAnimationDuration, delay: 0, usingSpringWithDamping: SwipeTableViewCell.kSpringDampingRatio, initialSpringVelocity: SwipeTableViewCell.kSpringVelocity, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
                 self.mainView.left = 0
             }) { (completed) -> Void in
                 print("Completed")

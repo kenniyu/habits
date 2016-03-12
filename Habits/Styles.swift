@@ -35,7 +35,8 @@ public class Styles {
     }
     
     public class Colors {
-        static let Green = UIColor(red: 48/255.0, green: 191/255.0, blue: 104/255.0, alpha: 1)
+        static let Green = UIColor(red: 130/255.0, green: 192/255.0, blue: 88/255.0, alpha: 1)
+        static let Red = UIColor(red: 225/255.0, green: 103/255.0, blue: 133/255.0, alpha: 1)
         static let Gray = UIColor(red: 48/255.0, green: 48/255.0, blue: 48/255.0, alpha: 1)
     }
     

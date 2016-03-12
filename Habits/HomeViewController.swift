@@ -57,7 +57,8 @@ class HomeViewController: BaseViewController {
     public func setupTableView() {
         registerCells()
         tableView.tableFooterView = UIView(frame: CGRectZero)
-        tableView.contentInset = UIEdgeInsetsMake(0, 0, HomeViewController.kButtonHeight, 0)
+        tableView.contentInset = UIEdgeInsetsMake(topBarHeight(), 0, HomeViewController.kButtonHeight, 0)
+        tableView.separatorStyle = .None
         tableView.reloadData()
     }
     
@@ -65,10 +66,9 @@ class HomeViewController: BaseViewController {
         let billAmount: Float = HomeViewController.kBillTotal
         let numParticipants: Float = HomeViewController.kNumParticipants
         sliderCellModels = [
-            SwipeTableViewCellModel("Foo Bar", detail: "\(billAmount/numParticipants)", percent: 1/numParticipants, max: billAmount),
-            SwipeTableViewCellModel("Man Whore", detail: "\(billAmount/numParticipants)", percent: 1/numParticipants, max: billAmount),
-            SwipeTableViewCellModel("Herp Derp", detail: "\(billAmount/numParticipants)", percent: 1/numParticipants, max: billAmount),
-            SwipeTableViewCellModel("Bar Baz", detail: "\(billAmount/numParticipants)", percent: 1/numParticipants, max: billAmount)
+            SwipeTableViewCellModel("Foo Bar", detail: "\(billAmount/numParticipants)", current: 10, habitMax: 20),
+            SwipeTableViewCellModel("Herp Derp", detail: "\(billAmount/numParticipants)", current: 10, habitMax: 20),
+            SwipeTableViewCellModel("Bar Baz", detail: "\(billAmount/numParticipants)", current: 10, habitMax: 20)
         ]
     }
     

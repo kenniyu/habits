@@ -7,33 +7,43 @@
 //
 
 import Foundation
-
+import UIKit
 
 public class SwipeTableViewCellModel {
     var title: String
     var detail: String
-    var max: Float
-    var percent: Float
-    var isLocked: Bool = false
-    var isEditMode: Bool = false
+    var habitMax: Int = 20
+    var current: Int = 10
     
-    var value: Float {
-        get {
-            return percent * max
+    public init(_ title: String, detail: String, current: Int, habitMax: Int) {
+        self.title = title
+        self.detail = detail
+        self.current = current
+        self.habitMax = habitMax
+    }
+    
+    public func negativeReinforcement() {
+        current -= 1
+        habitMax += 1
+        current = max(0, current)
+    }
+    
+    public func positiveReinforcement() {
+        current += 1
+        if current > habitMax {
+            habitMax = current
         }
     }
     
-    public init(_ title: String, detail: String, percent: Float, max: Float, isEditMode: Bool = false, isLocked: Bool = false) {
-        self.title = title
-        self.detail = detail
-        self.percent = percent
-        self.max = max
-        self.isEditMode = isEditMode
-        self.isLocked = isLocked
-    }
-    
-    public func updatePercent(percent: Float) {
-        self.percent = percent
-        self.detail = "\(value)"
+    public func getColor() -> UIColor {
+        // for now, we're restricted to hues of 0 to 0.3        
+        let percent = CGFloat(current)/CGFloat(max(1, habitMax))
+        let hue: CGFloat = 0.28 * percent
+        let saturation: CGFloat = 0.6
+        let brightness: CGFloat = 0.8
+        let alpha: CGFloat = 1
+        
+        let color = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
+        return color
     }
 }

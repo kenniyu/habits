@@ -22,14 +22,18 @@
                                 <rect key="frame" x="0.0" y="0.0" width="337" height="89.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minus" id="ILO-ee-mnG">
-                                        <rect key="frame" x="0.0" y="0.0" width="86" height="89.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DYG-ir-s5T">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minus" id="z8R-g6-OFd">
-                                        <rect key="frame" x="250" y="0.0" width="86" height="89.5"/>
+                                        <color key="tintColor" red="0.51200000000000001" green="0.754" blue="0.54251077589999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="plus"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5Z2-GG-rUf">
+                                        <rect key="frame" x="270" y="30" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
+                                        <color key="tintColor" red="0.88235294119999996" green="0.4039215686" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="minus"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -45,7 +49,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.51200000000000001" green="0.754" blue="0.54251077589999996" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -56,14 +60,15 @@
                 <outlet property="backView" destination="6Lx-wl-m4D" id="hvC-cp-rBZ"/>
                 <outlet property="containerView" destination="xcM-Y6-MqK" id="fli-fG-eYp"/>
                 <outlet property="mainView" destination="2Tj-hi-u0d" id="O3S-iG-0tO"/>
-                <outlet property="minusImageView" destination="z8R-g6-OFd" id="TOu-au-tYi"/>
-                <outlet property="plusImageView" destination="ILO-ee-mnG" id="IPv-oz-tkL"/>
+                <outlet property="minusButton" destination="5Z2-GG-rUf" id="5Jx-OJ-Uu9"/>
+                <outlet property="plusButton" destination="DYG-ir-s5T" id="soo-Ha-08T"/>
                 <outlet property="titleLabel" destination="DiK-lh-iDv" id="HfW-1a-Db3"/>
             </connections>
             <point key="canvasLocation" x="250.5" y="359"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="minus" width="160" height="160"/>
+        <image name="minus" width="30" height="30"/>
+        <image name="plus" width="30" height="30"/>
     </resources>
 </document>

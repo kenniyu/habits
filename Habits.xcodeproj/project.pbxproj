@@ -24,6 +24,7 @@
 		BEBAFD081C913BCB00EFF101 /* SwipeTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBAFD071C913BCB00EFF101 /* SwipeTableViewCellModel.swift */; };
 		BEBAFD0A1C913C5A00EFF101 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBAFD091C913C5A00EFF101 /* Styles.swift */; };
 		BEBAFD0C1C913D6F00EFF101 /* TextUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBAFD0B1C913D6F00EFF101 /* TextUtils.swift */; };
+		BEBE13921C94C900005B5F3E /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE13911C94C900005B5F3E /* UIColor+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		BEBAFD071C913BCB00EFF101 /* SwipeTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeTableViewCellModel.swift; sourceTree = "<group>"; };
 		BEBAFD091C913C5A00EFF101 /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		BEBAFD0B1C913D6F00EFF101 /* TextUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextUtils.swift; sourceTree = "<group>"; };
+		BEBE13911C94C900005B5F3E /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		C3C34C368AFE82FCE109CBEC /* Pods-Habits.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habits.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habits/Pods-Habits.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				BEBAFCFF1C913AD900EFF101 /* UIView+.swift */,
+				BEBE13911C94C900005B5F3E /* UIColor+.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				BEBAFCFA1C913A8200EFF101 /* HomeViewController.swift in Sources */,
 				BEBAFD051C913B1200EFF101 /* SwipeTableViewCell.swift in Sources */,
 				BEBAFD001C913AD900EFF101 /* UIView+.swift in Sources */,
+				BEBE13921C94C900005B5F3E /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
