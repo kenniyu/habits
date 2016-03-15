@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Color-Picker-for-iOS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Habits.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0577B1E81608DF8EEE9369731A0AD4FD</key>
+		<key>0CA51E076D4C43CF40D5FCFB85ECDCE5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>088675E5326F558BC0EF2509A83ED2EC</key>
+		<key>C61283A88401EE3F6434454200C40BB4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D5C39A384113396D5D6A52DBD43367E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

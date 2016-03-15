@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Habits/SwipeTableViewCell.swift"
-            timestampString = "479512753.813851"
+            filePath = "Habits/ExerciseSetTableViewCell.swift"
+            timestampString = "479711626.360681"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
-            landmarkName = "updateViewModel(_:)"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "didChangeWeightTextField(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Habits/SwipeTableViewCell.swift"
+            timestampString = "479712111.901429"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "handlePanGesture(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

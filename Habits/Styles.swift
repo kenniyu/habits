@@ -30,14 +30,15 @@ public class Styles {
         static let StellarButton = Fonts.avenirMediumFontWithSize(16)
         
         // Table View Cells
-        static let TableViewCellTitle = UIFont.systemFontOfSize(18, weight: UIFontWeightLight)
-        static let TableViewCellDetail = UIFont.systemFontOfSize(24)
+        static let TableViewCellTitle = UIFont.systemFontOfSize(16, weight: UIFontWeightLight)
+        static let TableViewCellDetail = UIFont.systemFontOfSize(14)
     }
     
     public class Colors {
         static let Green = UIColor(red: 130/255.0, green: 192/255.0, blue: 88/255.0, alpha: 1)
         static let Red = UIColor(red: 225/255.0, green: 103/255.0, blue: 133/255.0, alpha: 1)
         static let Gray = UIColor(red: 48/255.0, green: 48/255.0, blue: 48/255.0, alpha: 1)
+        static let LightGray = UIColor(red: 245/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1)
     }
     
     public class Dimensions {
@@ -69,5 +70,6 @@ public class Styles {
         static let TableViewCellElementHorizontalSpacing = kItemSpacingDim5
         
         static let SliderHeight = kItemSpacingDim8
+        static let TextFieldHeight = kItemSpacingDim8
     }
 }

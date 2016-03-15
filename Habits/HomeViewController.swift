@@ -19,10 +19,11 @@ class HomeViewController: BaseViewController {
     public static let kButtonHeight: CGFloat = 60
     public static let kBillTotal: Float = 200
     public static let kNumParticipants: Float = 4
-    public static let kTitle = "Habits"
+    public static let kTitle = "Routine"
     
     // Public
-    public var sliderCellModels: [SwipeTableViewCellModel] = []
+    public var sliderCellModels: [[SwipeTableViewCellModel]] = []
+    public var sectionHeaderCellModels: [BaseTableViewHeaderFooterViewModel] = []
     
     // Private
     private var maxCellLeft: CGFloat?
@@ -48,30 +49,38 @@ class HomeViewController: BaseViewController {
         
         title = HomeViewController.kTitle
         
+        setupNavBar()
         createCellModels()
         setupStyles()
         setupTableView()
         setupAccessibility()
     }
     
+    public func setupNavBar() {
+        let addButton = createAddButton()
+        addRightBarButtons([addButton])
+    }
+    
+    public override func add() {
+        print("Tapped add")
+        let createTaskViewController = CreateTaskViewController()
+        createTaskViewController.createTaskViewControllerDelegate = self
+        let navigationController = UINavigationController(rootViewController: createTaskViewController)
+        presentViewController(navigationController, animated: true, completion: nil)
+    }
+    
     public func setupTableView() {
         registerCells()
         tableView.tableFooterView = UIView(frame: CGRectZero)
         tableView.contentInset = UIEdgeInsetsMake(topBarHeight(), 0, HomeViewController.kButtonHeight, 0)
-        tableView.separatorStyle = .None
+//        tableView.separatorStyle = .None
         tableView.reloadData()
     }
     
     public func createCellModels() {
-        let billAmount: Float = HomeViewController.kBillTotal
-        let numParticipants: Float = HomeViewController.kNumParticipants
-        sliderCellModels = [
-            SwipeTableViewCellModel("Foo Bar", detail: "\(billAmount/numParticipants)", current: 10, habitMax: 20),
-            SwipeTableViewCellModel("Herp Derp", detail: "\(billAmount/numParticipants)", current: 10, habitMax: 20),
-            SwipeTableViewCellModel("Bar Baz", detail: "\(billAmount/numParticipants)", current: 10, habitMax: 20)
-        ]
+        // TODO: Load from core data
+        sliderCellModels = []
     }
-    
     
     private func setupAccessibility() {
     }
@@ -81,17 +90,18 @@ class HomeViewController: BaseViewController {
     }
     
     private func registerCells() {
+        tableView.registerClass(BaseTableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: BaseTableViewHeaderFooterView.kReuseIdentifier)
         tableView.registerNib(SwipeTableViewCell.nib, forCellReuseIdentifier: SwipeTableViewCell.reuseId)
     }
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return sliderCellModels.count
     }
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let viewModel = sliderCellModels[indexPath.row]
+        let viewModel = sliderCellModels[indexPath.section][indexPath.row]
         if let cell = tableView.dequeueReusableCellWithIdentifier(SwipeTableViewCell.kReuseIdentifier, forIndexPath: indexPath) as? SwipeTableViewCell {
             cell.setup(viewModel)
             return cell
@@ -100,21 +110,55 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sliderCellModels.count
+        return sliderCellModels[section].count
     }
     
     public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let viewModel = sliderCellModels[indexPath.row]
+        let viewModel = sliderCellModels[indexPath.section][indexPath.row]
         return SwipeTableViewCell.size(tableView.width, viewModel: viewModel).height
     }
     
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? SwipeTableViewCell else { return }
     }
+    
+    public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if let headerView = tableView.dequeueReusableHeaderFooterViewWithIdentifier(BaseTableViewHeaderFooterView.kReuseIdentifier) as? BaseTableViewHeaderFooterView {
+            let sectionHeaderModel = sectionHeaderCellModels[section]
+            headerView.setup(sectionHeaderModel)
+            return headerView
+        }
+        let view = UIView()
+        view.backgroundColor = UIColor.clearColor()
+        return view
+    }
+    
+    public func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return BaseTableViewHeaderFooterView.kSectionHeaderHeight
+    }
 }
 
 extension HomeViewController: SwipeTableViewCellDelegate {
     public func didTapDeleteButton(cell: SwipeTableViewCell) {
         // Remove the cell
+    }
+}
+
+extension HomeViewController: CreateTaskViewControllerDelegate {
+    public func didTapDoneButton(exerciseName: String, exerciseSetCellModels: [ExerciseSetTableViewCellModel]) {
+        var sectionCellModels: [SwipeTableViewCellModel] = []
+        
+        for exerciseSetCellModel in exerciseSetCellModels {
+            guard let weight = exerciseSetCellModel.weight else { continue }
+            guard let reps = exerciseSetCellModel.reps else { continue }
+            let title = "Set \(exerciseSetCellModel.set) - \(weight) lbs x \(reps)"
+            let cellModel = SwipeTableViewCellModel(title, current: 0, swipeMax: 1)
+            sectionCellModels.append(cellModel)
+        }
+        
+        let headerCellModel = BaseTableViewHeaderFooterViewModel(exerciseName)
+        sectionHeaderCellModels.append(headerCellModel)
+        sliderCellModels.append(sectionCellModels)
+        tableView.reloadData()
     }
 }

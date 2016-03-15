@@ -57,6 +57,39 @@ class BaseViewController: UIViewController, UIViewControllerTransitioningDelegat
     public func adjustTopBarSpacingConstraint() {
         // Override by subclass
     }
+    
+    public func addCloseButton() {
+        let closeBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: "closeVc")
+        let leftBarButtonItems = [closeBtn]
+        navigationItem.leftBarButtonItems = leftBarButtonItems
+    }
+    
+    public func createDoneButton() -> UIBarButtonItem {
+        let closeBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "done")
+        return closeBtn
+    }
+    
+    public func createAddButton() -> UIBarButtonItem {
+        let closeBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "add")
+        return closeBtn
+    }
+    
+    public func addRightBarButtons(buttons: [UIBarButtonItem]) {
+        let rightBarButtonItems = buttons
+        navigationItem.rightBarButtonItems = rightBarButtonItems
+    }
+    
+    public func done() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    public func add() {
+        // TO BE OVERRIDDEN
+    }
+    
+    public func closeVc() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }
 
 // Keyboard delegate

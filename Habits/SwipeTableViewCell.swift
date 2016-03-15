@@ -137,7 +137,17 @@ public class SwipeTableViewCell: UITableViewCell {
     }
     
     public func loadDataIntoViews(viewModel: SwipeTableViewCellModel) {
-        titleLabel.text = viewModel.title
+        updateTitle()
+    }
+    
+    public func title() -> String {
+        var title = viewModel.title
+        
+        if viewModel.swipeMax > 1 {
+            let detail = " (\(viewModel.current)/\(viewModel.swipeMax))"
+            title = title + detail
+        }
+        return title
     }
     
     public class func size(boundingWidth: CGFloat, viewModel: SwipeTableViewCellModel, constrainedWidthAdjustment: CGFloat = 0) -> CGSize {
@@ -225,19 +235,31 @@ extension SwipeTableViewCell {
                 updateViewModel(translationX)
             }
             animateCell()
-            updateBackground()
+            updateCell()
         }
+    }
+    
+    public override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard let velocity = swipeGesture?.velocityInView(mainView) else { return false }
+        return fabs(velocity.x) > fabs(velocity.y)
     }
     
     public func updateViewModel(translationX: CGFloat) {
         if translationX < 0 {
-            // We swiped left, bad habit
-            viewModel.negativeReinforcement()
+            // We swiped left, negative
+            viewModel.negative()
         } else {
-            // Good habit
-            viewModel.positiveReinforcement()
+            // Good habit, positive
+            viewModel.positive()
         }
-        print(viewModel)
+    }
+    
+    public func updateTitle() {
+        titleLabel.text = title()
+    }
+    
+    public func updateCell() {
+        updateTitle()
         updateBackground()
     }
     
@@ -246,35 +268,51 @@ extension SwipeTableViewCell {
             if abs(translationX) >= actionThresholdDeltaX() {
                 mainView.backgroundColor = viewModel.getNextColor(false)
             } else {
-                mainView.backgroundColor = viewModel.getColor()
+                if translationX == 0 {
+                    mainView.backgroundColor = viewModel.getColor()
+                } else {
+                    mainView.backgroundColor = viewModel.getColorFromPercent(getPercent(translationX))   
+                }
             }
         } else {
             if abs(translationX) >= actionThresholdDeltaX() {
                 mainView.backgroundColor = viewModel.getNextColor(true)
             } else {
-                mainView.backgroundColor = viewModel.getColor()
+                if translationX == 0 {
+                    mainView.backgroundColor = viewModel.getColor()
+                } else {
+                    mainView.backgroundColor = viewModel.getColorFromPercent(getPercent(translationX))
+                }
             }
         }
         
     }
     
-    public func updateImageViewAlphas(translationX: CGFloat) {
+    public func getPercent(translationX: CGFloat) -> CGFloat {
         if translationX < 0 {
             let minDomain: CGFloat = minusButton.left - 7 * plusButton.left
             let maxDomain: CGFloat = minusButton.right + plusButton.left
             let distDomain = maxDomain - minDomain
-            
-            var alpha = -1 * translationX / distDomain
+            return translationX / distDomain
+        } else if translationX > 0 {
+            let minDomain: CGFloat = 0
+            let maxDomain: CGFloat = plusButton.right + 7 * plusButton.left
+            let distDomain = maxDomain - minDomain
+            return translationX / distDomain
+        } else {
+            return 0
+        }
+    }
+    
+    public func updateImageViewAlphas(translationX: CGFloat) {
+        if translationX < 0 {
+            var alpha = -1 * getPercent(translationX)
             if abs(translationX) >= actionThresholdDeltaX() {
                 alpha = 1
             }
             minusButton.alpha = alpha
         } else if translationX > 0 {
-            let minDomain: CGFloat = 0
-            let maxDomain: CGFloat = plusButton.right + 7 * plusButton.left
-            let distDomain = maxDomain - minDomain
-
-            var alpha = translationX / distDomain
+            var alpha = getPercent(translationX)
             if abs(translationX) >= actionThresholdDeltaX() {
                 alpha = 1
             }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseTableViewHeaderFooterView" customModule="Habits" customModuleProvider="target">
+            <connections>
+                <outlet property="titleLabel" destination="jiv-rw-e1R" id="Cj7-q0-5DT"/>
+                <outlet property="view" destination="iN0-l3-epB" id="XtY-Ye-El4"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="384" height="84"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jiv-rw-e1R">
+                    <rect key="frame" x="0.0" y="0.0" width="384" height="84"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="jiv-rw-e1R" secondAttribute="trailing" id="D47-lc-tnF"/>
+                <constraint firstItem="jiv-rw-e1R" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="WmJ-Iw-4qa"/>
+                <constraint firstItem="jiv-rw-e1R" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dBR-r4-IDE"/>
+                <constraint firstAttribute="bottom" secondItem="jiv-rw-e1R" secondAttribute="bottom" id="dvM-em-viE"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="290" y="11"/>
+        </view>
+    </objects>
+</document>
