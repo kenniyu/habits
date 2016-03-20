@@ -78,7 +78,7 @@ class BaseTableViewCell: UITableViewCell {
         // Cell styles
         self.contentView.backgroundColor = UIColor.clearColor()
         containerView.backgroundColor = UIColor.clearColor()
-        backgroundColor = Styles.Colors.LightGray
+        backgroundColor = Styles.Colors.White
         
         if dataModel.isLast {
             separatorInset = UIEdgeInsetsMake(0, containerView.width, 0, 0)
