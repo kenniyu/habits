@@ -37,6 +37,8 @@
 		BEBB8F861C9F14AD000A265C /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBB8F851C9F14AD000A265C /* Exercise.swift */; };
 		BEBB8F891C9F178B000A265C /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBB8F871C9F178B000A265C /* RoutineViewController.swift */; };
 		BEBB8F8A1C9F178B000A265C /* RoutineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBB8F881C9F178B000A265C /* RoutineViewController.xib */; };
+		BEBB8F8C1C9F32B4000A265C /* ExerciseSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBB8F8B1C9F32B4000A265C /* ExerciseSet.swift */; };
+		BEBB8F8F1C9F371B000A265C /* DoubleTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBB8F8E1C9F371B000A265C /* DoubleTransform.swift */; };
 		BEBE13921C94C900005B5F3E /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE13911C94C900005B5F3E /* UIColor+.swift */; };
 		BEBF09131C9E423800F36BA3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF09121C9E423800F36BA3 /* NetworkManager.swift */; };
 		BEBF09151C9E426600F36BA3 /* Dictionary+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF09141C9E426600F36BA3 /* Dictionary+.swift */; };
@@ -110,6 +112,8 @@
 		BEBB8F851C9F14AD000A265C /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		BEBB8F871C9F178B000A265C /* RoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
 		BEBB8F881C9F178B000A265C /* RoutineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutineViewController.xib; sourceTree = "<group>"; };
+		BEBB8F8B1C9F32B4000A265C /* ExerciseSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseSet.swift; sourceTree = "<group>"; };
+		BEBB8F8E1C9F371B000A265C /* DoubleTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleTransform.swift; sourceTree = "<group>"; };
 		BEBE13911C94C900005B5F3E /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		BEBF09121C9E423800F36BA3 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BEBF09141C9E426600F36BA3 /* Dictionary+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+.swift"; sourceTree = "<group>"; };
@@ -316,6 +320,14 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		BEBB8F8D1C9F370C000A265C /* Transforms */ = {
+			isa = PBXGroup;
+			children = (
+				BEBB8F8E1C9F371B000A265C /* DoubleTransform.swift */,
+			);
+			name = Transforms;
+			sourceTree = "<group>";
+		};
 		BEBF09161C9E66D000F36BA3 /* Singleton */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,9 +339,11 @@
 		BEBF09191C9E681300F36BA3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BEBB8F8D1C9F370C000A265C /* Transforms */,
 				BEBF091A1C9E681C00F36BA3 /* ResponseObject.swift */,
 				BEF3EF361C9F102A00C0D917 /* Routine.swift */,
 				BEBB8F851C9F14AD000A265C /* Exercise.swift */,
+				BEBB8F8B1C9F32B4000A265C /* ExerciseSet.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -542,11 +556,13 @@
 				BEBAFCC71C913A1100EFF101 /* AppDelegate.swift in Sources */,
 				BEBF091E1C9E6C5D00F36BA3 /* LogInViewController.swift in Sources */,
 				BEBF092A1C9F0B7900F36BA3 /* BaseTableViewCell.swift in Sources */,
+				BEBB8F8C1C9F32B4000A265C /* ExerciseSet.swift in Sources */,
 				BEBAFCFD1C913AA900EFF101 /* BaseViewController.swift in Sources */,
 				BEF9354C1C96089A002ADD6A /* CreateTaskViewController.swift in Sources */,
 				BEBAFD0C1C913D6F00EFF101 /* TextUtils.swift in Sources */,
 				BEBAFD081C913BCB00EFF101 /* SwipeTableViewCellModel.swift in Sources */,
 				BEBF09261C9E888200F36BA3 /* RoutinesViewController.swift in Sources */,
+				BEBB8F8F1C9F371B000A265C /* DoubleTransform.swift in Sources */,
 				BEBB8F861C9F14AD000A265C /* Exercise.swift in Sources */,
 				BEBF091B1C9E681C00F36BA3 /* ResponseObject.swift in Sources */,
 				BEF3EF371C9F102A00C0D917 /* Routine.swift in Sources */,

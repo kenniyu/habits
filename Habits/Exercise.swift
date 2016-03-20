@@ -13,6 +13,7 @@ import ObjectMapper
 public class Exercise: Mappable {
     var _id: Int!
     var name: String!
+    var sets: [ExerciseSet]!
     
     required public init?(_ map: Map) {
         
@@ -22,5 +23,6 @@ public class Exercise: Mappable {
     public func mapping(map: Map) {
         _id    <- map["id"]
         name         <- map["name"]
+        sets       <- map["sets"]
     }
 }
