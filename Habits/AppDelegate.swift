@@ -22,7 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: frame)
         
         // there is a user, skip the initial vc
-        let initialViewController = HomeViewController()
+//        let initialViewController = HomeViewController()
+        let initialViewController = LogInViewController()
+        
         let rootViewController = UINavigationController(rootViewController: initialViewController)
         window!.rootViewController = rootViewController
         window!.makeKeyAndVisible()

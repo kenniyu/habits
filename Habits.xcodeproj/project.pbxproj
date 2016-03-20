@@ -18,11 +18,9 @@
 		BE752DCC1C966E50006C65CA /* ExerciseSetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE752DCA1C966E50006C65CA /* ExerciseSetTableViewCell.xib */; };
 		BE752DCF1C96747F006C65CA /* BaseTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE752DCE1C96747F006C65CA /* BaseTableViewHeaderFooterView.swift */; };
 		BE752DD11C96748A006C65CA /* BaseTableViewHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE752DD01C96748A006C65CA /* BaseTableViewHeaderFooterView.xib */; };
-		BE752DD31C9677E1006C65CA /* BaseTableViewHeaderFooterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE752DD21C9677E1006C65CA /* BaseTableViewHeaderFooterViewModel.swift */; };
 		BE752DD71C9687E6006C65CA /* ExerciseSetTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE752DD61C9687E6006C65CA /* ExerciseSetTableViewCellModel.swift */; };
 		BEBAFCC71C913A1100EFF101 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBAFCC61C913A1100EFF101 /* AppDelegate.swift */; };
 		BEBAFCCC1C913A1100EFF101 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBAFCCA1C913A1100EFF101 /* Main.storyboard */; };
-		BEBAFCCF1C913A1100EFF101 /* Habits.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BEBAFCCD1C913A1100EFF101 /* Habits.xcdatamodeld */; };
 		BEBAFCD11C913A1100EFF101 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEBAFCD01C913A1100EFF101 /* Assets.xcassets */; };
 		BEBAFCD41C913A1100EFF101 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBAFCD21C913A1100EFF101 /* LaunchScreen.storyboard */; };
 		BEBAFCDF1C913A1100EFF101 /* HabitsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBAFCDE1C913A1100EFF101 /* HabitsTests.swift */; };
@@ -36,7 +34,23 @@
 		BEBAFD081C913BCB00EFF101 /* SwipeTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBAFD071C913BCB00EFF101 /* SwipeTableViewCellModel.swift */; };
 		BEBAFD0A1C913C5A00EFF101 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBAFD091C913C5A00EFF101 /* Styles.swift */; };
 		BEBAFD0C1C913D6F00EFF101 /* TextUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBAFD0B1C913D6F00EFF101 /* TextUtils.swift */; };
+		BEBB8F861C9F14AD000A265C /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBB8F851C9F14AD000A265C /* Exercise.swift */; };
+		BEBB8F891C9F178B000A265C /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBB8F871C9F178B000A265C /* RoutineViewController.swift */; };
+		BEBB8F8A1C9F178B000A265C /* RoutineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBB8F881C9F178B000A265C /* RoutineViewController.xib */; };
 		BEBE13921C94C900005B5F3E /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE13911C94C900005B5F3E /* UIColor+.swift */; };
+		BEBF09131C9E423800F36BA3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF09121C9E423800F36BA3 /* NetworkManager.swift */; };
+		BEBF09151C9E426600F36BA3 /* Dictionary+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF09141C9E426600F36BA3 /* Dictionary+.swift */; };
+		BEBF09181C9E66DD00F36BA3 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF09171C9E66DD00F36BA3 /* SessionManager.swift */; };
+		BEBF091B1C9E681C00F36BA3 /* ResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF091A1C9E681C00F36BA3 /* ResponseObject.swift */; };
+		BEBF091E1C9E6C5D00F36BA3 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF091C1C9E6C5D00F36BA3 /* LogInViewController.swift */; };
+		BEBF091F1C9E6C5D00F36BA3 /* LogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBF091D1C9E6C5D00F36BA3 /* LogInViewController.xib */; };
+		BEBF09221C9E777E00F36BA3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF09201C9E777E00F36BA3 /* SettingsViewController.swift */; };
+		BEBF09231C9E777E00F36BA3 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBF09211C9E777E00F36BA3 /* SettingsViewController.xib */; };
+		BEBF09261C9E888200F36BA3 /* RoutinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF09241C9E888200F36BA3 /* RoutinesViewController.swift */; };
+		BEBF09271C9E888200F36BA3 /* RoutinesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBF09251C9E888200F36BA3 /* RoutinesViewController.xib */; };
+		BEBF092A1C9F0B7900F36BA3 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF09281C9F0B7900F36BA3 /* BaseTableViewCell.swift */; };
+		BEBF092B1C9F0B7900F36BA3 /* BaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBF09291C9F0B7900F36BA3 /* BaseTableViewCell.xib */; };
+		BEF3EF371C9F102A00C0D917 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF3EF361C9F102A00C0D917 /* Routine.swift */; };
 		BEF9354C1C96089A002ADD6A /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF9354A1C96089A002ADD6A /* CreateTaskViewController.swift */; };
 		BEF9354D1C96089A002ADD6A /* CreateTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF9354B1C96089A002ADD6A /* CreateTaskViewController.xib */; };
 /* End PBXBuildFile section */
@@ -71,12 +85,10 @@
 		BE752DCA1C966E50006C65CA /* ExerciseSetTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExerciseSetTableViewCell.xib; sourceTree = "<group>"; };
 		BE752DCE1C96747F006C65CA /* BaseTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 		BE752DD01C96748A006C65CA /* BaseTableViewHeaderFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseTableViewHeaderFooterView.xib; sourceTree = "<group>"; };
-		BE752DD21C9677E1006C65CA /* BaseTableViewHeaderFooterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewHeaderFooterViewModel.swift; sourceTree = "<group>"; };
 		BE752DD61C9687E6006C65CA /* ExerciseSetTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseSetTableViewCellModel.swift; sourceTree = "<group>"; };
 		BEBAFCC31C913A1100EFF101 /* Habits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBAFCC61C913A1100EFF101 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEBAFCCB1C913A1100EFF101 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BEBAFCCE1C913A1100EFF101 /* Habits.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Habits.xcdatamodel; sourceTree = "<group>"; };
 		BEBAFCD01C913A1100EFF101 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BEBAFCD31C913A1100EFF101 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BEBAFCD51C913A1100EFF101 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,7 +107,23 @@
 		BEBAFD071C913BCB00EFF101 /* SwipeTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeTableViewCellModel.swift; sourceTree = "<group>"; };
 		BEBAFD091C913C5A00EFF101 /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		BEBAFD0B1C913D6F00EFF101 /* TextUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextUtils.swift; sourceTree = "<group>"; };
+		BEBB8F851C9F14AD000A265C /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		BEBB8F871C9F178B000A265C /* RoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
+		BEBB8F881C9F178B000A265C /* RoutineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutineViewController.xib; sourceTree = "<group>"; };
 		BEBE13911C94C900005B5F3E /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		BEBF09121C9E423800F36BA3 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		BEBF09141C9E426600F36BA3 /* Dictionary+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+.swift"; sourceTree = "<group>"; };
+		BEBF09171C9E66DD00F36BA3 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		BEBF091A1C9E681C00F36BA3 /* ResponseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseObject.swift; sourceTree = "<group>"; };
+		BEBF091C1C9E6C5D00F36BA3 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		BEBF091D1C9E6C5D00F36BA3 /* LogInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogInViewController.xib; sourceTree = "<group>"; };
+		BEBF09201C9E777E00F36BA3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		BEBF09211C9E777E00F36BA3 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		BEBF09241C9E888200F36BA3 /* RoutinesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutinesViewController.swift; sourceTree = "<group>"; };
+		BEBF09251C9E888200F36BA3 /* RoutinesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutinesViewController.xib; sourceTree = "<group>"; };
+		BEBF09281C9F0B7900F36BA3 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		BEBF09291C9F0B7900F36BA3 /* BaseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseTableViewCell.xib; sourceTree = "<group>"; };
+		BEF3EF361C9F102A00C0D917 /* Routine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		BEF9354A1C96089A002ADD6A /* CreateTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
 		BEF9354B1C96089A002ADD6A /* CreateTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTaskViewController.xib; sourceTree = "<group>"; };
 		C3C34C368AFE82FCE109CBEC /* Pods-Habits.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habits.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habits/Pods-Habits.debug.xcconfig"; sourceTree = "<group>"; };
@@ -172,7 +200,8 @@
 			children = (
 				BE752DCE1C96747F006C65CA /* BaseTableViewHeaderFooterView.swift */,
 				BE752DD01C96748A006C65CA /* BaseTableViewHeaderFooterView.xib */,
-				BE752DD21C9677E1006C65CA /* BaseTableViewHeaderFooterViewModel.swift */,
+				BEBF09281C9F0B7900F36BA3 /* BaseTableViewCell.swift */,
+				BEBF09291C9F0B7900F36BA3 /* BaseTableViewCell.xib */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -202,6 +231,8 @@
 		BEBAFCC51C913A1100EFF101 /* Habits */ = {
 			isa = PBXGroup;
 			children = (
+				BEBF09191C9E681300F36BA3 /* Models */,
+				BEBF09161C9E66D000F36BA3 /* Singleton */,
 				BEBAFD011C913AF200EFF101 /* Views */,
 				BEBAFCFE1C913ACE00EFF101 /* Extensions */,
 				BEBAFCF71C913A7000EFF101 /* View Controllers */,
@@ -210,10 +241,10 @@
 				BEBAFCD01C913A1100EFF101 /* Assets.xcassets */,
 				BEBAFCD21C913A1100EFF101 /* LaunchScreen.storyboard */,
 				BEBAFCD51C913A1100EFF101 /* Info.plist */,
-				BEBAFCCD1C913A1100EFF101 /* Habits.xcdatamodeld */,
 				BEBAFCFC1C913AA900EFF101 /* BaseViewController.swift */,
 				BEBAFD091C913C5A00EFF101 /* Styles.swift */,
 				BEBAFD0B1C913D6F00EFF101 /* TextUtils.swift */,
+				BEBF09121C9E423800F36BA3 /* NetworkManager.swift */,
 			);
 			path = Habits;
 			sourceTree = "<group>";
@@ -243,6 +274,14 @@
 				BEBAFCF91C913A8200EFF101 /* HomeViewController.xib */,
 				BEF9354A1C96089A002ADD6A /* CreateTaskViewController.swift */,
 				BEF9354B1C96089A002ADD6A /* CreateTaskViewController.xib */,
+				BEBF091C1C9E6C5D00F36BA3 /* LogInViewController.swift */,
+				BEBF091D1C9E6C5D00F36BA3 /* LogInViewController.xib */,
+				BEBF09201C9E777E00F36BA3 /* SettingsViewController.swift */,
+				BEBF09211C9E777E00F36BA3 /* SettingsViewController.xib */,
+				BEBF09241C9E888200F36BA3 /* RoutinesViewController.swift */,
+				BEBF09251C9E888200F36BA3 /* RoutinesViewController.xib */,
+				BEBB8F871C9F178B000A265C /* RoutineViewController.swift */,
+				BEBB8F881C9F178B000A265C /* RoutineViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -252,6 +291,7 @@
 			children = (
 				BEBAFCFF1C913AD900EFF101 /* UIView+.swift */,
 				BEBE13911C94C900005B5F3E /* UIColor+.swift */,
+				BEBF09141C9E426600F36BA3 /* Dictionary+.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -274,6 +314,24 @@
 				BEBAFD071C913BCB00EFF101 /* SwipeTableViewCellModel.swift */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		BEBF09161C9E66D000F36BA3 /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				BEBF09171C9E66DD00F36BA3 /* SessionManager.swift */,
+			);
+			name = Singleton;
+			sourceTree = "<group>";
+		};
+		BEBF09191C9E681300F36BA3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BEBF091A1C9E681C00F36BA3 /* ResponseObject.swift */,
+				BEF3EF361C9F102A00C0D917 /* Routine.swift */,
+				BEBB8F851C9F14AD000A265C /* Exercise.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		DED1E8465B95212BDDD33413 /* Pods */ = {
@@ -392,17 +450,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEBF09231C9E777E00F36BA3 /* SettingsViewController.xib in Resources */,
 				BEBAFCD41C913A1100EFF101 /* LaunchScreen.storyboard in Resources */,
 				BE6D82891C97B221002F796B /* CreateExerciseTableHeaderView.xib in Resources */,
 				BE752DD11C96748A006C65CA /* BaseTableViewHeaderFooterView.xib in Resources */,
 				BEBAFCD11C913A1100EFF101 /* Assets.xcassets in Resources */,
+				BEBF09271C9E888200F36BA3 /* RoutinesViewController.xib in Resources */,
+				BEBF092B1C9F0B7900F36BA3 /* BaseTableViewCell.xib in Resources */,
 				BE6D828B1C97B517002F796B /* CreateExerciseTableFooterView.xib in Resources */,
 				BE752DCC1C966E50006C65CA /* ExerciseSetTableViewCell.xib in Resources */,
 				BEBAFD061C913B1200EFF101 /* SwipeTableViewCell.xib in Resources */,
 				BEF9354D1C96089A002ADD6A /* CreateTaskViewController.xib in Resources */,
+				BEBF091F1C9E6C5D00F36BA3 /* LogInViewController.xib in Resources */,
 				BE6D828F1C97BBCC002F796B /* CreateExerciseTableViewHeaderView.xib in Resources */,
 				BEBAFCCC1C913A1100EFF101 /* Main.storyboard in Resources */,
 				BEBAFCFB1C913A8200EFF101 /* HomeViewController.xib in Resources */,
+				BEBB8F8A1C9F178B000A265C /* RoutineViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,23 +538,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEBF09131C9E423800F36BA3 /* NetworkManager.swift in Sources */,
 				BEBAFCC71C913A1100EFF101 /* AppDelegate.swift in Sources */,
+				BEBF091E1C9E6C5D00F36BA3 /* LogInViewController.swift in Sources */,
+				BEBF092A1C9F0B7900F36BA3 /* BaseTableViewCell.swift in Sources */,
 				BEBAFCFD1C913AA900EFF101 /* BaseViewController.swift in Sources */,
 				BEF9354C1C96089A002ADD6A /* CreateTaskViewController.swift in Sources */,
 				BEBAFD0C1C913D6F00EFF101 /* TextUtils.swift in Sources */,
 				BEBAFD081C913BCB00EFF101 /* SwipeTableViewCellModel.swift in Sources */,
-				BE752DD31C9677E1006C65CA /* BaseTableViewHeaderFooterViewModel.swift in Sources */,
+				BEBF09261C9E888200F36BA3 /* RoutinesViewController.swift in Sources */,
+				BEBB8F861C9F14AD000A265C /* Exercise.swift in Sources */,
+				BEBF091B1C9E681C00F36BA3 /* ResponseObject.swift in Sources */,
+				BEF3EF371C9F102A00C0D917 /* Routine.swift in Sources */,
 				BE6D82871C97B1AF002F796B /* CreateExerciseTableFooterView.swift in Sources */,
 				BE6D82851C97B1A2002F796B /* CreateExerciseTableHeaderView.swift in Sources */,
 				BEBAFD0A1C913C5A00EFF101 /* Styles.swift in Sources */,
 				BE752DCF1C96747F006C65CA /* BaseTableViewHeaderFooterView.swift in Sources */,
-				BEBAFCCF1C913A1100EFF101 /* Habits.xcdatamodeld in Sources */,
+				BEBB8F891C9F178B000A265C /* RoutineViewController.swift in Sources */,
 				BE6D828D1C97BBBE002F796B /* CreateExerciseTableViewHeaderView.swift in Sources */,
 				BEBAFCFA1C913A8200EFF101 /* HomeViewController.swift in Sources */,
+				BEBF09221C9E777E00F36BA3 /* SettingsViewController.swift in Sources */,
+				BEBF09151C9E426600F36BA3 /* Dictionary+.swift in Sources */,
 				BE752DCB1C966E50006C65CA /* ExerciseSetTableViewCell.swift in Sources */,
 				BEBAFD051C913B1200EFF101 /* SwipeTableViewCell.swift in Sources */,
 				BE752DD71C9687E6006C65CA /* ExerciseSetTableViewCellModel.swift in Sources */,
 				BEBAFD001C913AD900EFF101 /* UIView+.swift in Sources */,
+				BEBF09181C9E66DD00F36BA3 /* SessionManager.swift in Sources */,
 				BEBE13921C94C900005B5F3E /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,10 +707,12 @@
 			baseConfigurationReference = C3C34C368AFE82FCE109CBEC /* Pods-Habits.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Habits/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ken.Habits;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7a549cde-2014-4827-8516-9ea77938ca84";
 			};
 			name = Debug;
 		};
@@ -647,10 +721,12 @@
 			baseConfigurationReference = 1D2C29C02FCFAC96265500EA /* Pods-Habits.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Habits/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ken.Habits;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7a549cde-2014-4827-8516-9ea77938ca84";
 			};
 			name = Release;
 		};
@@ -742,19 +818,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		BEBAFCCD1C913A1100EFF101 /* Habits.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				BEBAFCCE1C913A1100EFF101 /* Habits.xcdatamodel */,
-			);
-			currentVersion = BEBAFCCE1C913A1100EFF101 /* Habits.xcdatamodel */;
-			path = Habits.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = BEBAFCBB1C913A1100EFF101 /* Project object */;
 }

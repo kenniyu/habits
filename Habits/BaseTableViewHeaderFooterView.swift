@@ -9,6 +9,14 @@
 import Foundation
 import UIKit
 
+public class BaseTableViewHeaderFooterViewModel {
+    var title: String
+    
+    public init(_ title: String) {
+        self.title = title
+    }
+}
+
 public
 class BaseTableViewHeaderFooterView: UITableViewHeaderFooterView {
     @IBOutlet weak var view: UIView!

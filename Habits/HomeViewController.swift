@@ -54,6 +54,20 @@ class HomeViewController: BaseViewController {
         setupStyles()
         setupTableView()
         setupAccessibility()
+        
+        login()
+    }
+    
+    public func login() {
+        NetworkManager.sharedInstance.getRequest("/token") { (response) -> Void in
+            switch response.result {
+            case .Success(let JSON):
+                guard let token = JSON["token"] as? String else { return }
+                print("token = \(token)")
+            default:
+                print("HELO")
+            }
+        }
     }
     
     public func setupNavBar() {

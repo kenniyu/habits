@@ -122,7 +122,7 @@ extension BaseViewController {
     public func keyboardWillHide(notification: NSNotification) {
         guard let keyboardNotificationInfo = getKeyboardNotificationInfo(notification) else { return }
         
-        keyboardDelegate?.keyboardWillShow?(
+        keyboardDelegate?.keyboardWillHide?(
             keyboardNotificationInfo.keyboardHeight,
             animationOptions: keyboardNotificationInfo.animationCurveOptions,
             animationDuration: keyboardNotificationInfo.animationDuration)
